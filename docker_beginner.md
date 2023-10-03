@@ -52,3 +52,13 @@ RUN npm install
 EXPOSE 4000 -> (In whcih port container will expose)
 CMD [ "node", "app.js" ] -> (Run at runtime) (Image is building app, so don't use RUN node app.js)
 ```
+
+
+## How to build image
+
+docker build -t myapp .
+
+breaking down
+-t -> for tagging
+myapp -> tag name
+. -> relative path for Dockerfile directory
