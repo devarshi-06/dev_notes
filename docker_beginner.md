@@ -238,3 +238,25 @@ services:
 - ```docker-compose down``` will delete all conatainers
 
 ```docker-compose down --rmi all -v``` It will remove images and volumes and containers also.
+
+----------------------------------------------------------
+Demo
+```
+version: "3.8"
+services:
+  api:
+    build: ./api
+    container_name: api_c
+    ports:
+      - '4000:4000'
+    volumes:
+      - ./api:/app
+      - /app/node_modules
+  myblog:
+    build: ./myblog
+    container_name: myblog_c
+    ports: 
+      - '3000:3000'
+    stdin_open: true
+    tty: true
+```
