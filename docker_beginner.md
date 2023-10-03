@@ -192,7 +192,26 @@ for removing multiple container
 ```docker system prune -a``` -> remove all images, container and volumes
 
 - To get tag o image
-```docker build -t myapp:v1```
+```docker build -t myapp:v1 path_to_dockerfile```
 - to run this for container
 ```docker run --name myapp_c -p 4000:4000 myapp:v1```
 ----------------------------------------------------------
+
+My sightseeings
+
+- If you build new image with new tag or image with new tag, If something is not changes, it takes steps from caching
+
+## Volumes
+- Give a way to map directory to container, so we can see changes , if we change source code things
+- map our folder to container folders
+
+````docker run --name myapp_c_nodemon -p 4000:4000 -d --rm myapp:nodemon`` Here, rm flag means remove or deleting container once we stop
+
+remember one thing, that all the flag comes before image name.
+
+We can add volume here
+```docker run --name myapp_c_nodemon -p 4000:4000 -d --rm -v local_path:container_path myapp:nodemon```
+If anything changes in project, it changes in container too
+But for node modules related. Do this to remove node module connection
+```docker run --name myapp_c_nodemon -p 4000:4000 -d --rm -v local_path:container_path -v node_modules myapp:nodemon```
+
