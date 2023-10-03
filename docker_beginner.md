@@ -86,7 +86,7 @@ docker images
 docker image ls
 ```
 
-2. Create and run container
+2. Create and run container<br/>
     a. Create a container with name
         ```
         docker run --name myapp_c1 myapp
