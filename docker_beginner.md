@@ -1,3 +1,18 @@
+# Index
+- [Container](#container)
+- [Why to do ?](#why-to-do)
+- [How container happens ?](#how-container-happens-)
+- [Docker Images](#docker-images)
+- [Dockerfile](#dockerfile)
+- [How to build image](#how-to-build-image)
+- [How to see images ?](#how-to-see-images-)
+- [DockerIgnore](#dockerignore)
+- [How to create a container ?](#how-to-create-a-container-)
+- [Layer caching](#layer-caching)
+- [Manages Images and Conatiners](#manages-images-and-conatiners)
+- [Volumes](#volumes)
+- [Docker compose](#docker-compose)
+
 ## Container
 - One type of box that will come with all the things needed
 
@@ -28,6 +43,7 @@ Images are made of certain layers
 
 - To make image write Dockerfile
 - Once image is created it is read only, so for every change new image have to build.
+  
 ## Dockerfile
 
 ```
@@ -52,7 +68,6 @@ RUN npm install
 EXPOSE 4000 -> (In whcih port container will expose)
 CMD [ "node", "app.js" ] -> (Run at runtime) (Image is building app, so don't use RUN node app.js)
 ```
-
 
 ## How to build image
 
@@ -260,3 +275,5 @@ services:
     stdin_open: true
     tty: true
 ```
+
+## Note :- This notes are from learning Docker from The Net Ninja on youtube.
