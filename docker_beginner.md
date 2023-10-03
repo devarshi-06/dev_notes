@@ -205,7 +205,7 @@ My sightseeings
 - Give a way to map directory to container, so we can see changes , if we change source code things
 - map our folder to container folders
 
-````docker run --name myapp_c_nodemon -p 4000:4000 -d --rm myapp:nodemon`` Here, rm flag means remove or deleting container once we stop
+````docker run --name myapp_c_nodemon -p 4000:4000 -d --rm myapp:nodemon``` Here, rm flag means remove or deleting container once we stop
 
 remember one thing, that all the flag comes before image name.
 
