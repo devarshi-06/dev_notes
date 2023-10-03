@@ -27,7 +27,7 @@ Images are made of certain layers
 - parent image [top-3]
 
 - To make image write Dockerfile
-
+- Once image is created it is read only, so for every change new image have to build.
 ## Dockerfile
 
 ```
@@ -100,6 +100,7 @@ docker image ls
         ```
     Here -d flag is to detach terminal, otherwise your terminal is blocked and show like server listen type interface.
     Here -p is spacify port. Right -> Docker and left -> our app
+    It is port mapping.
 
 3. Now container is running
 
@@ -124,3 +125,43 @@ docker ps
 ```
 docker ps -a
 ```
+
+## Layer caching
+
+```
+FROM node:17-alpine
+WORKDIR /app
+COPY . .
+RUN npm install
+EXPOSE 4000
+CMD [ "node", "app.js" ]
+```
+In upper code, one line add one layer in image
+So, every line is represent adding new layer and that's way image is build.
+
+When we build it first time, docker stored it in cached for every step
+- Docker try to find it when creating new image, and then use cache
+
+### Edge Case think
+- If we change code inside app or source code it gonna affect copy layer, so docker take before layer as cached and copy and after layer gonna be build up.
+- Let's think of a new thing
+Here, we don't want to re-build npm install, if source code changes. So,we will modify it so npm install takes from caches
+```
+FROM node:17-alpine
+WORKDIR /app
+RUN npm install
+COPY . .
+EXPOSE 4000
+CMD [ "node", "app.js" ]
+```
+But again, if we are building it, it won't find package.json. So, we will do this.
+```
+FROM node:17-alpine
+WORKDIR /app
+COPY package.json .
+RUN npm install
+COPY . .
+EXPOSE 4000
+CMD [ "node", "app.js" ]
+```
+So, this is layer caching
