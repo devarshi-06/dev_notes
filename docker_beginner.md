@@ -25,3 +25,30 @@ Images are made of certain layers
 - dependencies [top-1]
 - source code [top-2]
 - parent image [top-3]
+
+- To make image write Dockerfile
+
+## Dockerfile
+
+```
+FROM node:17-alpine -> (Get node v17 alpine image) --get from-- (Dockerhub | own compute if exist in local)
+COPY . /app -> (copy our folder to root in container)
+
+Problem this command will run in root folder -> but it don't have, so we have to run in app
+RUN npm install -> (Run Command) ---Dependencies
+```
+if COPY . . means copy from this root to that root.
+if source code is in src than copy ./src to ,
+
+v2
+```
+FROM node:17-alpine
+
+WORKDIR /app
+-----now all command will work from this folder------
+COPY . . -> (Because now we workdir is app)
+
+RUN npm install
+EXPOSE 4000 -> (In whcih port container will expose)
+CMD [ "node", "app.js" ] -> (Run at runtime) (Image is building app, so don't use RUN node app.js)
+```
