@@ -65,7 +65,11 @@ myapp -> tag name<br/>
 
 
 ## How to see images ?
-docker image ls
+```
+docker image ls ||
+docker images ||
+docker image list
+```
 
 ## DockerIgnore
 
