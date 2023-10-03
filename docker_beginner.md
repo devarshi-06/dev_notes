@@ -140,7 +140,7 @@ In upper code, one line add one layer in image
 So, every line is represent adding new layer and that's way image is build.
 
 When we build it first time, docker stored it in cached for every step
-- Docker try to find it when creating new image, and then use cache
+- Docker try to find it when creating new image for this, and then use cache
 
 ### Edge Case think
 - If we change code inside app or source code it gonna affect copy layer, so docker take before layer as cached and copy and after layer gonna be build up.
