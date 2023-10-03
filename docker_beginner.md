@@ -62,3 +62,65 @@ breaking down<br/>
 -t -> for tagging<br/>
 myapp -> tag name<br/>
 . -> relative path for Dockerfile directory<br/>
+
+
+## How to see images ?
+docker image ls
+
+## DockerIgnore
+
+- same as git, ignore files from source code or folders while building image
+
+```
+node_modules
+*.md
+```
+
+## How to create a container ?
+
+###steps
+
+1. List out images
+```
+docker images
+docker image ls
+```
+
+2. Create and run container
+    a. Create a container with name
+        ```
+        docker run --name myapp_c1 myapp
+        ```
+    
+    b. Create a container name with outside port mapping
+    - Note: If your app is listening to port 4000 in app, and your container is exposing in port 4000, if you see localhost:4000 it will not show anything. For that showing we have to specify a port
+
+        ```
+        docker run --name myapp_c1 -p 5000:4000 -d  myapp
+        ```
+    Here -d flag is to detach terminal, otherwise your terminal is blocked and show like server listen type interface.
+    Here -p is spacify port. Right -> Docker and left -> our app
+
+3. Now container is running
+
+- Restarting an existing container
+```
+docker start myapp_c1
+```
+
+- You can not run an existing container
+
+- stopping a container
+```
+docker stop (container_name || conatiner_id)
+```
+
+- showing all currently active container
+```
+docker ps
+```
+
+- showing all container
+```
+docker ps -a
+```
