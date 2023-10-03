@@ -215,3 +215,26 @@ If anything changes in project, it changes in container too
 But for node modules related. Do this to remove node module connection
 ```docker run --name myapp_c_nodemon -p 4000:4000 -d --rm -v local_path:container_path -v node_modules myapp:nodemon```
 
+## Docker compose
+
+- to handle multiple container for a project
+- Don't need to individually manage and run each container
+
+```
+version: "3.8"
+services:
+  api:
+    build: ./api
+    container_name: api_c
+    ports:
+      - '4000:4000'
+    volumes:
+      - ./api:/app
+      - /app/node_modules
+```
+
+- In docker compose volume is relative path while in termianl it was absolute path
+- run ```docker-compose up```, that's it
+- ```docker-compose down``` will delete all conatainers
+
+```docker-compose down --rmi all -v``` It will remove images and volumes and containers also.
