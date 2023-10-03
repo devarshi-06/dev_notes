@@ -58,7 +58,7 @@ CMD [ "node", "app.js" ] -> (Run at runtime) (Image is building app, so don't us
 
 docker build -t myapp .
 
-breaking down
--t -> for tagging
-myapp -> tag name
-. -> relative path for Dockerfile directory
+breaking down<br/>
+-t -> for tagging<br/>
+myapp -> tag name<br/>
+. -> relative path for Dockerfile directory<br/>
