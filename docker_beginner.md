@@ -18,4 +18,10 @@ Contains
 - Extra Config
 - envs
 
-==> It runs on parent image (which is os and runtime in some cases)
+==> It contains first layer as parent image (which is os and runtime in some cases)
+
+Images are made of certain layers
+- run commands [top]
+- dependencies [top-1]
+- source code [top-2]
+- parent image [top-3]
