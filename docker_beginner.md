@@ -165,3 +165,30 @@ EXPOSE 4000
 CMD [ "node", "app.js" ]
 ```
 So, this is layer caching
+
+
+## Manages Images and Conatiners
+
+- For removing an image that are not using by container
+```docker image rm myapp``` (If any conainre use that image, it gives error)
+
+- Removing an image that use by container
+```docker image rm myapp -f```
+or
+1. Delete a container
+```docker container rm app_c2```
+I don't know but sure to try out this command using IDs
+for removing multiple container
+```docker container rm c1 c2 c3```
+
+2. Delete an image as previous command
+```docker image rm myapp```
+---------------------------------------------------------
+
+```docker system prune -a``` -> remove all images, container and volumes
+
+- To get tag o image
+```docker build -t myapp:v1```
+- to run this for container
+```docker run --name myapp_c -p 4000:4000 myapp:v1```
+----------------------------------------------------------
