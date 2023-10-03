@@ -1,2 +1,4 @@
-# dev_docker
-Repo created during learning of Docker
+# Notes
+Repo for storing notes
+
+- [Docker for Beginners](docker_beginner.md)
