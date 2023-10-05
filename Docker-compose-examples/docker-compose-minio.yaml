@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  minio:
+    image: minio/minio
+    volumes:
+      - minio_data:/data
+    ports:
+      - "9001:9001"
+    environment:
+      - MINIO_ROOT_USER=devarshi
+      - MINIO_ROOT_PASSWORD=devarshi
+    command: server --console-address ":9001" /data
+
+volumes:
+  minio_data:
