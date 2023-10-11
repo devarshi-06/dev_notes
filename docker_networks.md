@@ -8,8 +8,12 @@
 - [The Overlay Network](#the-overlay-network)
 - [The None Network](#the-none-network)
 
+<hr/>
+
 ## Intro
 Docker contains 7 type of networks
+
+<hr/>
 
 ## Bridge Network
 -> Default network is bridge
@@ -38,6 +42,8 @@ You cannot access this things by it's ip address and port in browser. <br/>
 You have to expose port for it. <br/>
 
 So, default is bridge network.
+
+<hr/>
 
 ## The User-defined Bridge
 -> just means you are defining it or making it.
@@ -68,13 +74,18 @@ One more advantage of User defined bridge <br/>
 1. In Default bridge you can ping other container in same network using ip but not name. <br />
 2. In User define bridge you can ping other container in same network using name. <br/>
 
+<hr/>
+
 ## The HOST Network
 -> It is weird network. But pretty ossowmmmmm <br/>
 When you deploy container in host network, it has not have it's own network.<br/>
 You don't have to expose any port<br/>
 You can access it directly from the host.<br/>
+just defing ```--network host``` in making of container <br/>
 
 -> It runs on host as any other app, but downside is it has no isolation.
+
+<hr/>
 
 ## The MACVLAN Network
 -> simply connect docker container to our physical network. <br/>
@@ -114,6 +125,8 @@ use vm tool to set promiscuos Allow all. Now, it will work.
 #### Two mode of macvlan
 1. Bridge Mode
 2. 802.1q Mode
+
+<hr/>
 
 ## The IPVLAN Network
 modes -> L2 (Default), L3 <br/>
@@ -162,10 +175,14 @@ docker network create -d ipvlan \
 We don't have to specify gateway <br/>
 container can talk to each other subnet container<br/>
 
+<hr/>
+
 ## The Overlay Network
 In production and cloud multiple host running multiple containers.<br/>
 For communication, networking is crazy, their comes overlay<br/>
 Something Docker swarm <br/>
+
+<hr/>
 
 ## The None Network
 none network is already there, if you ```docker network ls``` <br/>
@@ -173,5 +190,6 @@ none network is already there, if you ```docker network ls``` <br/>
 ```docker run -itd --rm --network none --name gorr busybox``` <br/>
 ```ip address show``` give nothing to show.
 
+<hr/>
 ## ref
 video -> https://www.youtube.com/watch?v=bKFMS5C4CG0
