@@ -1,5 +1,5 @@
 # Index
-- [Intro](#into)
+- [Intro](#intro)
 - [Bridge Network](#bridge-network)
 
 ## Intro
