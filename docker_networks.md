@@ -53,11 +53,11 @@ So, default is bridge network.
 
 #### Why create own network instead of default bridge
 1. It provides isolation
-2. Our first network is bridge and user define bridge network is asgard -> they cannot communicate with each other
+2. Our first network is bridge and user define bridge network is asgard -> they cannot communicate with each other <br/><br/>
 So, if you go to the terminal of thor and try to ping loki through it's ip, it will not work (100% packet or data loss) <br/>
 You can ping containers in that network. <br/>
 From the shell of loki, you can ping loki_2 but not the container of default bridge network like thor, mjolnir and stormbreaker <br/>
 <br/>
 One more advantage of User defined bridge <br/>
-1. In Default bridge you can ping other container in same network using ip but not name.
-2. In User define bridge you can ping other container in same network using name.
+1. In Default bridge you can ping other container in same network using ip but not name. <br />
+2. In User define bridge you can ping other container in same network using name. <br/>
