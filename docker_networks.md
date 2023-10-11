@@ -87,3 +87,26 @@ docker network create -d macvlan \
 > newasgard
 ```
 here, -o for option and newasgard is network name
+
+### Example
+
+1. Let's create containers
+```
+docker run -itd --rm --network newasgard --ip ip_addr --name new_thor busybox
+```
+Now, new_thor connected like vm ,br/>
+
+Doing ```ip address show```, It will show macvlan but ping default gateway which will also be of container connected in macvlan but not ping anything. Downside<br/>
+
+Docker container get own mac address. Network may not have multiple mac address. (port may not handle it. It says one to two only allowed) <br/>
+
+```sudo up link set enp0s3(network interface) promisc on``` -> promiscuos on
+
+see it work ? -> if not work, change down each network device.
+
+use vm tool to set promiscuos Allow all. Now, it will work.
+
+-> I have not practiced it, just watched a video
+
+## ref
+video -> https://www.youtube.com/watch?v=bKFMS5C4CG0
