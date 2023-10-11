@@ -28,5 +28,36 @@ Now, I will go in thor ```docker exec -it thor sh``` <br/>
 and do ```ip addr show``` <br/>
 and you see ip address. You can ping another container from here <br/>
 
+You cannot access this things by it's ip address and port in browser. <br/>
+You have to expose port for it. <br/>
+
 So, default is bridge network.
 
+## The User-defined Bridge
+-> just means you are defining it or making it.
+ 
+ ```docker network create asgard``` -> makes new network asgard. In ```ip addrress show``` you can see that <br/>
+ ```docker nerwork ls``` -> you will see bridge name <br/>
+
+ ### Example
+
+1. let's create a network asgard
+```docker network create asgard```
+
+2. Let's add 2 containers in it
+```docker run -itd --rm --network asgard --name loki busybox```
+```docker run -itd --rm --network asgard --name loki_2 busybox```
+
+3. You can ispect asgard
+```docker inspect asgard```
+
+#### Why create own network instead of default bridge
+1. It provides isolation
+2. Our first network is bridge and user define bridge network is asgard -> they cannot communicate with each other
+So, if you go to the terminal of thor and try to ping loki through it's ip, it will not work (100% packet or data loss) <br/>
+You can ping containers in that network. <br/>
+From the shell of loki, you can ping loki_2 but not the container of default bridge network like thor, mjolnir and stormbreaker <br/>
+<br/>
+One more advantage of User defined bridge <br/>
+1. In Default bridge you can ping other container in same network using ip but not name.
+2. In User define bridge you can ping other container in same network using name.
