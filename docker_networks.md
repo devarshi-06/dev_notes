@@ -2,6 +2,8 @@
 - [Intro](#intro)
 - [Bridge Network](#bridge-network)
 - [The User defined Bridge](#the-user-defined-bridge)
+- [The Host Network](#the-host-network)
+- [The MACVLAN Network](#the-macvlan-network)
 
 ## Intro
 Docker contains 7 type of networks
@@ -62,3 +64,26 @@ From the shell of loki, you can ping loki_2 but not the container of default bri
 One more advantage of User defined bridge <br/>
 1. In Default bridge you can ping other container in same network using ip but not name. <br />
 2. In User define bridge you can ping other container in same network using name. <br/>
+
+## The HOST Network
+-> It is weird network. But pretty ossowmmmmm <br/>
+When you deploy container in host network, it has not have it's own network.<br/>
+You don't have to expose any port<br/>
+You can access it directly from the host.<br/>
+
+-> It runs on host as any other app, but downside is it has no isolation.
+
+## The MACVLAN Network
+-> simply connect docker container to our physical network. <br/>
+-> It is like directly connecting switch of house. (Physical Router or Switch) <br/>
+-> They have their own mac and ip , acting like vm<br/>
+
+-> To create a network
+```
+docker network create -d macvlan \
+--subnet home_network_subnet\
+> --gateway router_home_network\
+> -o parent=enp0s3 (tie macvlan to host interface)\ 
+> newasgard
+```
+here, -o for option and newasgard is network name
