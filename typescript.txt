@@ -1,0 +1,407 @@
+Devarshi Trivedi
+notes 2022
+supported to see in vs code and notepad++
+Done during internship in Tatvasoft (vvp sem-7)
+
+compilement--------------------------------------------
+tsc name.ts
+name.ts - name.js converted
+adapting changes without run always -> tsc name.ts --watch
+also output in command line (only apply for simple text programs) node name.js
+
+typeScript--------------------------------
+-->Superset of Javascript
+-->More Features
+-->ECMAscript Javascript Standerd
+-->oo support
+-->big projects
+-->much more...
+
+----------------------------------------------------------------------------------------------------------------------
+Duplicate Identifier issue --> js and ts read as a script. if they find any common btw them it -> issue
+watch mode -> automatic conversion in ts to js
+    tsc file.ts --watch
+let --> var conversion ts->js (different type browser not support)
+var support :)
+-----------------------------------------------------------------------------------------------------------------------
+
+types------------------------------------------------------------------------------
+var name=value;
+optional (declaration) dosen't need declaration (you can and also if you don't want. it's okay)
+let a:string/number/boolean=value; 
+var a:number=value;
+var a:string=value;
+//example
+var a:number = 10;
+var b:boolean = true;
+var d:string = "hi";
+
+number can accpet int and float both
+____________________________________________________________________________________________
+|_____________let___________________________|____________var________________________________|
+|let is block-scoped.	                   | var is function scoped.                        |
+|let does not allow to redeclare variables. | var allows to redeclare variables.            |
+|___________________________________________________________________________________________| 
+let c = "Hello TS";
+
+arrays--------------------------------------------------------------------------------------
+collection of data types
+let name = [, , ,]
+
+cosnole.warn(name)
+name.push()
+in tutorial give error to push different type if array does not contain minimum one type that type of value
+..but in my ts version it does not give error you can alwaysh push whether or not array contain this type of value atleast one time or not. It can push but give error.
+let name:string -> X
+let name:string[]/int[] = [];
+let name:Array<number/boolean>;
+name = [];
+
+//example
+let data = ['lu', 'shin', 'lop',10,true]
+let data1:string[] = ['hi','hello']
+
+object-------------------------
+----default type object----------------------------
+    let objectname={
+        property: value,
+        property: value
+    }
+    objectname.property = value //only updatable if first defined type and given type are same
+    objectname.newPropertName: value; //cannot create new property after creation
+
+    //example------------------------------------------------
+    let users={
+        name:'bruce',
+        age: 33,
+        address: 'Koitra'
+    }
+
+    //users.name = 2000; <--error
+    console.warn(users)
+    users.name='peter';
+    console.warn(users)
+    //users.email: 'peter@gmail.com'; <--error
+
+----custom type object-------------------------------------------------
+    interface objectname{
+        property:datatype,
+        property:datatype
+    }
+    let objectname1:objectname={
+        property: value,
+        property: value
+    }
+     objectname.property = value //only updatable if defined type in interface and given type are same
+
+     //example---------------------------------------------------------
+    interface usersTyped{
+        name:string,
+        age:number,
+        address:string
+    }
+
+    let users:usersTyped={
+        name:'bruce',
+        age: 33,
+        address: 'Koitra'
+    }
+    console.warn(users)
+
+    users.address='krite;
+    console.warn(users)
+
+----any----------------------------------------------
+    interface objectname{
+        property:datatype,
+        propertyX:any
+    }
+    let objectname1:objectname={
+        property: value,
+        property: value
+    }
+     objectname.propertyX = value (any value acceptable)
+    
+    //example---------------------------
+    interface usersTyped{
+        name:string,
+        age:number,
+        address:any
+    }
+
+    let users:usersTyped={
+        name:'bruce',
+        age: 33,
+        address: 'Koitra'
+    }
+    console.warn(users)
+
+    users.address=2000;
+    users.name=2000 <--gives error
+    console.warn(users)
+
+----any type of value in objects all properties-----------------------
+    let objectname:any={
+        property: value,
+        property: value
+    }
+
+    objectname.property=value; //accept any data type
+    //applicable to all properties
+
+    //example-----------------------------------------
+        let users:any={
+            name:'bruce',
+            age: 33,
+            address: 'Koitra'
+        }
+        console.warn(users)
+
+        users.address=2000;
+        users.name=true;
+        console.warn(users)
+
+--------------------------------------------------------------------------------------------------
+
+--------------union type--------------------------
+    variable can contain more than one data type value
+    union helps to assign variable more than one type of value
+
+    we can store any type using
+    let name:any = value; //any type can assignable
+
+    but union solution
+    let name:string|number=value; //accept string and number
+    let name:string|boolean=value; //accept string and boolean 
+
+    //example
+    let data:string|number|boolean='ani';
+    data =10;
+
+----------interfaces------------------------------------------
+    cannot define normal data type of class cz it contains more than one type
+
+    so to define all type of class we create template lnown as interface
+    interface objectname{
+        property:datatype,
+        property:datatype
+    }
+    let objectname1:objectname={
+        property: value,
+        property: value
+    }
+
+    //example
+    interface userType{
+        name:string,
+        oo:number
+    }
+
+    let user:userType={
+        name:'anil',
+        oo:30
+    }
+
+----------------functions-----------------------------------
+
+------normal
+    function name()
+    {
+        return ;
+    }
+    or
+    function name():number
+    {
+        return ;
+    }
+
+    //examples
+    function cals():number
+    {
+        return 10+10
+    }
+
+    console.warn(cals())
+
+    function cals1(a:number):number
+    {
+        return a;
+    }
+
+    console.warn(cals1(100))
+
+    function cals2(a:number,b?:number):number //? for optional not stricly needed
+    {
+        return b?a+b:a; //ternery if b then a+b otherwise a
+    }
+
+    console.warn(cals2(100,50))
+
+--------------classes-------------------
+class name{
+
+    property=value //don't need let or var
+    constructor()
+    {
+        console.warn("const called")
+    }
+    functionName() //don't write function and name
+    {
+       code
+    }
+}
+
+let varname = new name();
+varname.functionName();
+
+    //example-------------------------------------
+    class App{
+
+    name="abd fgh" //don't need let or var
+    constructor()
+    {
+        console.warn("const called")
+    }
+    getName() //don't write function and name
+    {
+        console.warn(this.name)
+    }
+    }
+
+    let a1 = new App();
+    a1.getName();
+
+    //with parameter 
+    class App1{
+
+        name //don't need let or var
+        age:number
+        constructor(name,age)
+        {
+            this.name=name
+            this.age=age
+        }
+        getName():string //returns string //don't write function and name
+        {
+            console.warn(this.name,this.age)
+            return this.name
+        }
+        getage():void //no return
+        {
+
+        }
+    }
+
+    let a11 = new App1("abd",33);
+    a11.getName();
+
+---------------inheritance--------------------------------------------
+        child inherit parent
+    parents functions uses in child
+
+class Parent{               //parent class
+    name='kokan manas';
+    setName(name){
+        this.name=name
+    }
+}
+class child extends Parent{     //extends functions from parent class
+    
+    getName()
+    {
+        return this.name
+    }
+}
+
+let c1=new child();
+c1.setName('Peteo') //can use
+console.warn(c1.getName());
+
+-------------Modules------------------------------------
+block of code (releted piece)
+can use in more than one file
+--student module--------
+export default class Login //export default
+{
+    data="Login done"
+}
+
+--teacher module-----
+export default class Login
+{
+    data="Login Teacher done"
+}
+---main module----
+import sLogin from './moduleStuden' //have to import in 3rd file
+import tlogin from './moduleTeacher'
+
+let teacher=new tlogin();
+console.warn(teacher.data)
+
+let student = new sLogin();
+console.warn(student.data)
+
+-----enum----------------------------------------
+set of values
+variables values must be one of enum
+ //example
+                enum Days{
+                    mon="mon" //string 
+                    // mon, tue, wed, thur, fri, sat, sun
+                }
+
+                //two ways either numeric or string
+
+                // let whichDay:Days;
+                // // whichDay="test" //error
+                // whichDay=1 //can use number
+                // console.warn(whichDay)
+                // whichDay=Days.mon
+                // console.warn(whichDay) //give numeric output
+                // whichDay=Days.mon
+                // console.warn(whichDay) 
+
+                //width function
+
+                function whichDay1(day:Days){return day};
+                console.warn(whichDay1(Days.mon)) 
+
+------ts config files----------------------------------------------------
+output/input folder
+convert or non-convert files
+ECMAscript version
+Experimental Features
+
+terminal-->tsc --init 
+tscconfig.json
+"rootDir" - converting folder
+"out" - output folder for js file :)
+after config in tsconfig "include":["src"]
+so outer file cannot consider
+
+-----type alias------------------------------
+redability reusability
+type varType = string|number|undefined;
+let a:varType = 10;
+let b:varType=20;
+let c:varType=undefined;
+
+//for declaring only one time
+//type varType = string|number|undefined;
+
+------------Quality improvment----------------------
+additional checks in tsconfig file
+
+-----constructor and shorthand initialization---------------------
+constructor=automatically called
+//example
+export{}
+class User{
+    constructor(public name: string, public age: number, public email: string){}
+    displayVal(){
+        console.warn(this.name,this.age,this.email);
+    }
+}
+const u1=new User("ano",33,"z@gmail.com");
+u1.displayVal();
+------------------------------------------------------------------------------------------
